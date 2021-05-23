@@ -5,11 +5,13 @@ class CustomSearchField extends StatelessWidget {
   final Widget suffixIcon;
   final String hintText;
   final VoidCallback onClickSearchField;
+  final bool isFromOrders;
   CustomSearchField(
       {this.prefixIcon,
       this.suffixIcon,
       this.hintText,
-      this.onClickSearchField});
+      this.onClickSearchField,
+      this.isFromOrders = false});
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -22,7 +24,9 @@ class CustomSearchField extends StatelessWidget {
           cursorColor: Colors.grey,
           maxLines: 1,
           decoration: InputDecoration(
-            fillColor: Colors.white,
+            fillColor: isFromOrders == false
+                ? Colors.white
+                : Colors.grey.withOpacity(0.5),
             filled: true,
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
